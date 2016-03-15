@@ -1,9 +1,102 @@
 <html>
-	<head>
-	</head>
-	<style>
-	</style>
-	<body>
+    <head>
+        
+    </head>
+    <style>
+        img {
+            width:50px;
+            height:50px;
+        }
+        .table {
+            display: table;
+        }
+        .tiles {
+            display: table-cell;
+            width:80px;
+            height:80px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .row {
+            display: table-row;
+        }
+        .tileblack{
+        	background-color: black;
+        	 display: table-cell;
+            width:80px;
+            height:80px;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .tilewhite{
+        	background-color: white;
+        	 display: table-cell;
+            width:80px;
+            height:80px;
+            border-style: solid;
+            border-width: 1px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //create the div with class table
+            var tableDiv = $("<div>", {
+                class:"table"
+            });
+            //appendTo will put the div between the body tag
+            tableDiv.appendTo("body");
 
-	</body>
+            //create a for loop the rows
+            for(var row = 0; row < 8; row++) {
+                //create the div with class row
+                var tableRow = $("<div>", {
+                    class:"row"
+                });
+                
+                //put the div between the div with class table
+                tableRow.appendTo(tableDiv);
+
+                //create the columns
+                for (var col = 0; col < 8; col++) {
+              	if(row%2) {
+              		if(col%2){
+              			  var tableCell = $("<div>",{
+                          class:"tileblack"
+              			  });
+              			
+              		}
+              			else{
+              				var tableCell = $("<div>",{
+                        	class:"tilewhite"
+              			  });
+              			}
+              	}
+				else {
+                 	if(col%2){
+              			  var tableCell = $("<div>",{
+                          class:"tilewhite"
+              			  });
+              			
+              		}
+              			else{
+              				var tableCell = $("<div>",{
+                        	class:"tileblack"
+              			  });
+              			}
+             
+				}
+                    
+                 
+              
+                  
+                   
+                    tableCell.appendTo(tableRow);
+                }
+            }
+        });
+    </script>
+    <body>
+        
+    </body>
 </html>
